@@ -9,7 +9,12 @@ endif ()
 
 find_package(ZLIB QUIET)
 if (NOT ZLIB_FOUND)
-    include(ZLIB/ZLIB.cmake)
+    message(WARNING "No ZLIB dev package found in system, building static library. You should install the system package.")
+endif ()
+
+find_package(EXPAT QUIET)
+if (NOT EXPAT_FOUND)
+    message(WARNING "No EXPAT dev package found in system, building static library. Consider installing the system package.")
 endif ()
 
 ExternalProject_Add(dep_tbb
